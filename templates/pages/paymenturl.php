@@ -1,16 +1,14 @@
 <?
 
-require_once '../init.php';
-
-$ipsp->setParam('order_id',$_GET['order_id']);
+$ipsp->setParam('order_id',$order_id);
 $ipsp->setParam('order_desc','Test Product');
 $ipsp->setParam('currency','UAH');
-$ipsp->setParam('response_url',sprintf('http://%s/result.php?order_id=%s',$_SERVER['HTTP_HOST'],$_GET['order_id']));
+$ipsp->setParam('response_url',sprintf('http://%s/page/result/%s',$_SERVER['HTTP_HOST'],$order_id));
+$ipsp->setParam('amount',200);
 
-$result = $ipsp->call('PaymentUrl',array(
-    "amount"		=> "200",
-    "delayed"		=> "y"
-));
+$data = $ipsp->call('PaymentUrl')->getResponse();
+
+if( $data->checkout_url )
+    Flight::redirect($data->checkout_url);
 
 
-print_r($result->redirectToCheckout());

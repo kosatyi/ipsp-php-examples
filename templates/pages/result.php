@@ -1,10 +1,5 @@
 <?
 
-require_once 'init.php';
-
-
-$order_id    = $_GET['order_id'];
-
 if($ipsp->hasAcsData()){
     $result = $ipsp->call('PaymentPcidssConfirm',array(
         'order_id' => $order_id,
@@ -21,24 +16,17 @@ if($ipsp->hasAcsData()){
 }
 $data = $result->getResponse();
 ?>
-<!doctype html>
-<html>
-<head>
-    <title></title>
-    <link rel="stylesheet" href="/styles.css" type="text/css">
-</head>
-<body>
-<header id="header">
+<header id="response_header">
     <h1>Response Status : <em class="<?=$data->response_status?>"><?=$data->response_status?></em></h1>
 </header>
-<nav id="nav">
-    <p><a href="/templates/pages/refund.php?order_id=<?=$order_id?>">Refund</a></p>
+<nav id="response_nav">
+    <p><a href="/page/reverse/<?=$order_id?>">Refund</a></p>
     <p><a href=""></a></p>
     <p><a href=""></a></p>
     <p><a href=""></a></p>
 </nav>
-<section id="content">
-    <table>
+<section id="response_content">
+    <table class="response">
         <tr>
             <th>Property</th>
             <th>Value</th>
@@ -53,5 +41,3 @@ $data = $result->getResponse();
         </tbody>
     </table>
 </section>
-</body>
-</html>
