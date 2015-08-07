@@ -1,21 +1,18 @@
-<?
-
-if($ipsp->hasAcsData()){
-    $result = $ipsp->call('PcidssConfirm',array(
-        'order_id' => $order_id,
-        'pares'    => $_POST['PaRes'],
-        'md'       => $_POST['MD'],
-        'version'  => '1.0'
-    ));
-} elseif( $ipsp->hasResponseData() ) {
-    $result = $ipsp->call('Result',$_POST);
-} else{
-    $result = $ipsp->call('Status',array(
-        'order_id' => $order_id
-    ));
-}
+<?php
+$ipsp->setParam('order_id',$order_id);
+$ipsp->setParam('order_desc','Test Product');
+$ipsp->setParam('currency','UAH');
+$ipsp->setParam('response_url',sprintf('http://%s/page/result/%s',$_SERVER['HTTP_HOST'],$order_id));
+$result = $ipsp->call('Pcidss',array(
+    "amount"		=> 1020,
+    "card_number"   => 4444555511116666, //4444555566661111
+    "cvv2"          => 111,
+    "expiry_date"   => 1224
+));
+$result->acsRedirect();
 $data = $result->getResponse();
 ?>
+
 <header id="response_header">
     <h1>Response Status : <em class="<?=$data->response_status?>"><?=$data->response_status?></em></h1>
 </header>

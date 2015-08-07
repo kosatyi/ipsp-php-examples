@@ -15,25 +15,35 @@
 		<script>hljs.initHighlightingOnLoad();</script>
 	</head>
 	<body>
-		<header id="header">
+	<header id="header">
 			<h1><?=Flight::get('appname')?></h1>
-		</header>
-		<main id="main">
-			<ins class="col nav"></ins>
-			<ins class="col content"></ins>
-			<nav class="cell nav">
-				<ul class="list">
-					<h3>Прием платежей</h3>
+	</header>
+	<main id="main">
+		<ins class="col nav"></ins>
+		<ins class="col content"></ins>
+		<nav class="cell nav">
+			<ul class="list">
+				<li>
+					<a href="/page/create">Создать запрос</a>
+				</li>
+				<li>
+					<h3>API</h3>
 					<ul>
-					<li><a href="/page/paymentredirect">Перенаправление плательщика на платежную страницу.</a></li>
-					<li><a href="/page/paymenturl">Предварительный host-to-host запрос получения URL платежной страницы</a></li>
-					<li><a href="/page/paymentpcidss">Карта вводится на сайте магазина</a></li>
+						<li><a href="/page/checkout">Принять платеж</a></li>
+						<li><a href="/page/pcidss">Принять платеж (PCIDSS)</a></li>
+						<li><a href="/page/status">Проверить статус платежа</a></li>
+						<li><a href="/page/reverse">Возврат платежа</a></li>
+						<li><a href="/page/reports">Выписка по платежам</a></li>
+						<li><a href="/page/recurring">Принять платеж по токену</a></li>
+						<li><a href="/page/verification">Проверка карты</a></li>
+						<li><a href="/page/capture">Списание заблокированной суммы</a></li>
 					</ul>
-				</ul>
-			</nav>
-			<section class="cell content">
-				<?=$content?>
-			</section>
-		</main>
+				</li>
+			</ul>
+		</nav>
+		<section class="cell content">
+			<?=$content?>
+		</section>
+	</main>
 	</body>
 </html>

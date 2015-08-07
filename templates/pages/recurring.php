@@ -1,11 +1,6 @@
 <?
-    $date_from = new DateTime('-2 days');
-    $date_to = new DateTime('now');
-    $ipsp->setParam('date_from',$date_from->format('d.m.Y'));
-    $ipsp->setParam('date_to',$date_to->format('d.m.Y'));
-    $result = $ipsp->call('Reports');
+    $result = $ipsp->call('Recurring');
     $data = $result->getResponse();
-
 ?>
 <header id="response_header">
     <h1>Reverse Status : <em class="<?=$data->response_status?>"><?=$data->response_status?></em></h1>
