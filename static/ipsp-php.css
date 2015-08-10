@@ -18,6 +18,9 @@ html,body{
 	min-width:100%;
 	display:block;
 }
+a{
+	color: #6474ff;
+}
 /**
  * 	
  */
@@ -64,6 +67,10 @@ html,body{
 .nav .list a{
 	font-size:14px;
 	position:relative;
+}
+.nav .list a small{
+	font-size:11px;
+	color: #ff5157;
 }
 .nav .list a,.nav .list h3{
 	display:block;

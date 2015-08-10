@@ -29,14 +29,15 @@
 				<li>
 					<h3>API</h3>
 					<ul>
-						<li><a href="/page/checkout">Принять платеж</a></li>
-						<li><a href="/page/pcidss">Принять платеж (PCIDSS)</a></li>
-						<li><a href="/page/status">Проверить статус платежа</a></li>
-						<li><a href="/page/reverse">Возврат платежа</a></li>
-						<li><a href="/page/reports">Выписка по платежам</a></li>
-						<li><a href="/page/recurring">Принять платеж по токену</a></li>
-						<li><a href="/page/verification">Проверка карты</a></li>
-						<li><a href="/page/capture">Списание заблокированной суммы</a></li>
+						<li><a href="/page/checkout">Accept purchase<br><small>(hosted payment page)</small></a></li>
+						<li><a href="/page/pcidss">Accept purchase <br><small>(merchant payment page)</small></a></li>
+						<li><a href="/page/status">Check orders status <br><small>(using order_id)</small></a></li>
+						<li><a href="/page/reverse">Order reversal <br><small>(by order_id)</small></a></li>
+						<li><a href="/page/reports">Payment report</a></li>
+						<li><a href="/page/recurring">Purchase by card token</a></li>
+						<li><a href="/page/verification">Card verification</a></li>
+						<li><a href="/page/capture">Payment capture</a></li>
+						<li><a href="/page/p2pcredit">P2P credit card</a></li>
 					</ul>
 				</li>
 			</ul>
