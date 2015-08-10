@@ -1,40 +1,37 @@
-<?php
-$ipsp->setParam('order_id',$order_id);
-$ipsp->setParam('order_desc','Test Product');
-$ipsp->setParam('currency','UAH');
-$ipsp->setParam('response_url',sprintf('http://%s/page/result/%s',$_SERVER['HTTP_HOST'],$order_id));
-$result = $ipsp->call('Pcidss',array(
-    "amount"		=> 1020,
-    "card_number"   => 4444555511116666, //4444555566661111
-    "cvv2"          => 111,
-    "expiry_date"   => 1224
-));
-$result->acsRedirect();
-$data = $result->getResponse();
-?>
+<section id="checkout_form">
+    <form class="checkout" method="post" action="/page/pcidss_submit">
+        <input type="hidden" name="order_desc" value="Short Order Description">
+        <fieldset>
+            <input type="text" name="order_id" value="order_<?=rand(1111111,9999999)?>">
+        </fieldset>
+        <fieldset>
+            <input type="text" name="order_desc" value="Short Order Description">
+        </fieldset>
 
-<header id="response_header">
-    <h1>Response Status : <em class="<?=$data->response_status?>"><?=$data->response_status?></em></h1>
-</header>
-<nav id="response_nav">
-    <p><a href="/page/reverse/<?=$order_id?>">Refund</a></p>
-    <p><a href=""></a></p>
-    <p><a href=""></a></p>
-    <p><a href=""></a></p>
-</nav>
-<section id="response_content">
-    <table class="response">
-        <tr>
-            <th>Property</th>
-            <th>Value</th>
-        </tr>
-        <tbody>
-        <?foreach($data->getData() as $key=>$value):?>
-            <tr>
-                <td><?=$key?></td>
-                <td><?=$value?></td>
-            </tr>
-        <?endforeach;?>
-        </tbody>
-    </table>
+        <fieldset>
+            <input type="text" name="amount" placeholder="0.00">
+            <select name="currency">
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="RUB">RUB</option>
+                <option value="UAH">UAH</option>
+            </select>
+        </fieldset>
+        <fieldset>
+            <label><strong>Checkout Form</strong></label>
+        </fieldset>
+        <fieldset>
+            <input type="text" name="card_number" placeholder="Credit Card Number">
+        </fieldset>
+        <fieldset>
+            <input type="text" class="short" name="expiry_date[]" maxlength="3" placeholder="MM">
+            <input type="text" class="short" name="expiry_date[]" maxlength="3" placeholder="YY">
+        </fieldset>
+        <fieldset>
+            <input type="password" name="cvv2" maxlength="3" placeholder="CVV">
+        </fieldset>
+        <fieldset>
+            <button>Checkout</button>
+        </fieldset>
+    </form>
 </section>

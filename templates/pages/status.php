@@ -1,25 +1,18 @@
 <?
-$ipsp->setParam('order_id',$order_id);
-$result = $ipsp->call('Status');
-$data = $result->getResponse();
-?>
 
-<header id="response_header">
-    <h1>Payment Status : <em class="<?=$data->response_status?>"><?=$data->response_status?></em></h1>
-</header>
-<section id="response_content">
-    <table class="response">
-        <tr>
-            <th>Property</th>
-            <th>Value</th>
-        </tr>
-        <tbody>
-        <?foreach($data->getData() as $key=>$value):?>
-            <tr>
-                <td><?=$key?></td>
-                <td><?=$value?></td>
-            </tr>
-        <?endforeach;?>
-        </tbody>
-    </table>
-</section>
+if(!$order_id){
+    $date_from = new DateTime('-2 days');
+    $date_to = new DateTime('now');
+    $result = $ipsp->call('reports',array(
+        'date_from'=>$date_from->format('d.m.Y'),
+        'date_to'=>$date_to->format('d.m.Y')
+    ));
+    $data = $result->getResponse();
+    Flight::render('fragments/reports',array('data'=>$data));
+} else{
+    $result = $ipsp->call('status',array(
+        'order_id'=>$order_id
+    ));
+    $data = $result->getResponse();
+    Flight::render('fragments/response',array('data'=>$data));
+}

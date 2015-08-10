@@ -1,11 +1,23 @@
-<?
-    $ipsp->setParam('order_id',$order_id);
-    $ipsp->setParam('order_desc','Test Product');
-    $ipsp->setParam('currency','UAH');
-    $ipsp->setParam('response_url',sprintf('http://%s/page/result/%s',$_SERVER['HTTP_HOST'],$order_id));
-    $ipsp->setParam('amount',200);
-
-    $data = $ipsp->call('Verification')->getResponse();
-
-    if( $data->checkout_url )
-        Flight::redirect($data->checkout_url);
+<section id="checkout_form">
+    <form class="checkout" method="post" action="/page/verification_submit">
+        <input type="hidden" name="order_desc" value="Short Order Description">
+        <fieldset>
+            <input type="text" name="order_id" value="order_<?=rand(1111111,9999999)?>">
+        </fieldset>
+        <fieldset>
+            <input type="text" name="order_desc" value="Short Order Description">
+        </fieldset>
+        <fieldset>
+            <input type="text" name="amount" placeholder="0.00">
+            <select name="currency">
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="RUB">RUB</option>
+                <option value="UAH">UAH</option>
+            </select>
+        </fieldset>
+        <fieldset>
+            <button>Proceed to Checkout</button>
+        </fieldset>
+    </form>
+</section>

@@ -1,35 +1,29 @@
 <?
-    $ipsp->setParam('order_id',$order_id);
-    $ipsp->setParam('currency','UAH');
-    $ipsp->setParam('amount','200');
-    $result = $ipsp->call('Reverse');
+    $order_id = implode('_',array('recurring',rand(1111111,9999999)));
+    $result = $ipsp->call('pcidss',array(
+        'order_id'   => $order_id ,
+        'order_desc' => 'Test Order Description',
+        'amount'     => 2000,
+        'currency'   => $ipsp::UAH ,
+        'expiry_date'=> '1224',
+        'card_number'=> 4444555511116666,
+        'cvv2'       => 111
+    ));
     $data = $result->getResponse();
 ?>
-<!doctype html>
-<html>
-<head>
-    <title></title>
-    <link rel="stylesheet" href="/styles.css" type="text/css">
-</head>
-<body>
-<header id="response_header">
-    <h1>Reverse Status : <em class="<?=$data->response_status?>"><?=$data->response_status?></em></h1>
-</header>
-<section id="response_content">
-    <table class="response">
-        <tr>
-            <th>Property</th>
-            <th>Value</th>
-        </tr>
-        <tbody>
-        <?foreach($data->getData() as $key=>$value):?>
-            <tr>
-                <td><?=$key?></td>
-                <td><?=$value?></td>
-            </tr>
-        <?endforeach;?>
-        </tbody>
-    </table>
+<section id="checkout_form">
+    <form class="checkout" method="post" action="/page/reverse_submit">
+        <fieldset>
+            <input type="text" name="order_id" value="<?=$order_id?>">
+        </fieldset>
+        <fieldset>
+            <input type="text" name="amount" value="<?=$data->amount?>">
+        </fieldset>
+        <fieldset>
+            <input type="text" name="currency" readonly value="<?=$data->currency?>">
+        </fieldset>
+        <fieldset>
+            <button>Proceed to Reverse</button>
+        </fieldset>
+    </form>
 </section>
-</body>
-</html>

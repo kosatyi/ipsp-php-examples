@@ -1,2 +1,2 @@
-# ipsp-php-examples
+# IPSP (PHP) SDK Examples
 ----
