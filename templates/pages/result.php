@@ -7,7 +7,7 @@ if($ipsp->hasAcsData()){
         'version'  => '1.0'
     ));
 } elseif( $ipsp->hasResponseData() ) {
-    $result = $ipsp->call('result',$_POST);
+    $result = $ipsp->call('result');
 } else{
     $result = $ipsp->call('status',array(
         'order_id' => $order_id

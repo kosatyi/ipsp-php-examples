@@ -9,7 +9,6 @@ $data = $result->getResponse();
 
 ?>
 <?if($data->isSuccess()):?>
-<?=$params['server_callback_url']?>
 <style>
 #checkout_wrapper{
     position:fixed;

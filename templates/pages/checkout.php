@@ -8,7 +8,7 @@
             </select>
         </fieldset>
         <fieldset>
-            <input type="text" name="order_id" value="order_<?=rand(1111111,9999999)?>">
+            <input type="text" name="order_id" value="<?=uniqid('order')?>">
         </fieldset>
         <fieldset>
             <input type="text" name="order_desc" value="Short Order Description">
