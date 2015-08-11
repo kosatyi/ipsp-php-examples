@@ -30,5 +30,4 @@ Flight::route('/page/@page(/@order_id)', function($page='notfound',$order_id=NUL
     Flight::output(sprintf('pages/%s',$page));
 });
 
-
 Flight::start();
