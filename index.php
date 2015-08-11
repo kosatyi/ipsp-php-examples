@@ -30,4 +30,14 @@ Flight::route('/page/@page(/@order_id)', function($page='notfound',$order_id=NUL
     Flight::output(sprintf('pages/%s',$page));
 });
 
+
+Flight::route('/modal/@page', function($page='notfound'){
+    Flight::view()->set('ipsp',Flight::ipsp());
+    Flight::render(sprintf('modal/%s',$page));
+});
+
+Flight::route('/api/checkout', function(){
+    $data = Flight::request()->data;
+});
+
 Flight::start();

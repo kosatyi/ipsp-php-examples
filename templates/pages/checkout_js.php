@@ -9,11 +9,50 @@ $data = $result->getResponse();
 
 ?>
 <?if($data->isSuccess()):?>
-<script src="https://api.oplata.com/static/v1/js/oplata.js"></script>
+
+<style>
+#checkout_wrapper{
+    position:fixed;
+    width:400px;
+    height:560px;
+    z-index:100;
+    top:100px;
+    left:50%;
+    margin-left:-240px;
+    border:1px solid #dfdfdf;
+    padding:5px;
+    overflow:hidden;
+    box-shadow:1px solid #ccc;
+}
+#checkout_wrapper iframe{
+    overflow:hidden;
+}
+</style>
 <div id="checkout_wrapper"></div>
+
 <script>
     $oplata('checkout').scope(function(){
         this.setCheckoutWrapper('#checkout_wrapper');
+        this.setModal(false);
+        this.setCssStyle({
+            '.page-section-tabs':{
+              'display':'none'
+            },
+            '.pages-checkout':{
+                'background':'transparent'
+            },
+            'html,body':{
+              'overflow':'hidden',
+              'padding':0,
+              'margin':0
+            },
+            '.page-section-shopinfo .col-login,.gui_input_suggest .arrow':{
+                'display':'none'
+            }
+        });
+        this.action('show',function(){
+            console.log('show',arguments);
+        });
         this.loadUrl('<?=$data->checkout_url?>');
     });
 </script>

@@ -187,3 +187,75 @@ form.checkout button{
 	padding:5px 10px;
 	cursor:pointer;
 }
+
+
+html,body{
+	//overflow:hidden;
+}
+
+.modal-show{
+	overflow:hidden;
+}
+
+.modal{
+	position:absolute;
+	z-index:9999;
+	top:0;
+	left:0;
+	bottom:0;
+	right:0;
+	overflow-y:auto;
+	background-color:rgba(0,0,0,0.2);
+	display:none;
+}
+
+.modal.show{
+	display:block;
+}
+
+.modal-window{
+	padding:5px;
+	max-width:640px;
+	margin:10px auto;
+	position:relative;
+	z-index:10;
+	background-color:#fff;
+}
+.modal-header{
+	line-height:50px;
+	background-color: #2d81d4;
+	color:#fff;
+}
+.modal-header:after{
+	content:'';
+	clear:both;
+	display:block;
+}
+.modal-title{
+	float:left;
+	padding:0 20px;
+	font-size:20px;
+	text-transform:uppercase;
+}
+.modal-close{
+	float:right;
+	padding:0 20px;
+	display:block;
+	text-align:center;
+	font-size:32px;
+	cursor:pointer;
+}
+.modal-close:hover{
+	color:#ff9;
+}
+.modal-content{
+
+}
+
+.modal-checkout{
+	max-width:400px;
+	top:80px;
+}
+.modal-checkout .modal-content{
+	height:560px;
+}

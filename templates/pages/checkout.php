@@ -1,10 +1,10 @@
 <section id="checkout_form">
-    <form class="checkout" method="post" action="/page/checkout_submit">
+    <form class="checkout" method="post" action="/page/checkout_js">
         <input type="hidden" name="order_desc" value="Short Order Description">
         <fieldset>
             <select onchange="this.form.action=this.value">
                 <option value="/page/checkout_submit">Standalone Page</option>
-                <option value="/page/checkout_js">JS Widget</option>
+                <option selected value="/page/checkout_js">JS Widget</option>
             </select>
         </fieldset>
         <fieldset>
@@ -14,7 +14,7 @@
             <input type="text" name="order_desc" value="Short Order Description">
         </fieldset>
         <fieldset>
-            <input type="text" name="amount" placeholder="0.00">
+            <input type="text" name="amount" placeholder="0.00" value="20">
             <select name="currency">
                 <option value="USD">USD</option>
                 <option value="EUR">EUR</option>

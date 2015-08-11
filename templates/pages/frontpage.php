@@ -1,4 +1,1 @@
-<?
-	Flight::set('apptitle','');
-?>
-
+<a href="javascript:void(0)" onclick="$.modal('/modal/checkout',initCheckout)">Checkout</a>
