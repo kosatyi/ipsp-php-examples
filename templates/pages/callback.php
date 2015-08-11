@@ -3,4 +3,8 @@
     $mongo = new MongoClient;
     $db  = $mongo->selectDB('shop');
     $collection  = $db->selectCollection('ipsp_callbacks');
-    $collection->insert($ipsp->call('result')->getResponse());
+
+    $result = $ipsp->call('result');
+
+    if( $result->getResponse() )
+        $collection->insert($result->getResponse());
