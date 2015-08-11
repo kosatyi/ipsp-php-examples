@@ -6,14 +6,19 @@ $params['amount'] = $params['amount'] * 100;
 $params['response_url'] = sprintf($urlpattern,$host,$params['order_id']);
 $result = $ipsp->call('checkout',$params->getData());
 $data = $result->getResponse();
+
 ?>
+<?if($data->isSuccess()):?>
 <script src="https://api.oplata.com/static/v1/js/oplata.js"></script>
 <div id="checkout_wrapper"></div>
 <script>
-
     $oplata('checkout').scope(function(){
         this.setCheckoutWrapper('#checkout_wrapper');
         this.loadUrl('<?=$data->checkout_url?>');
     });
-
 </script>
+<?else:?>
+    <?
+        Flight::render('fragments/response',array('data'=>$data));
+    ?>
+<?endif;?>
