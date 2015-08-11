@@ -36,6 +36,9 @@
 		<nav class="cell nav">
 			<ul class="list">
 				<li>
+					<h3><a href="/page/callback_list">Callback List</a></h3>
+				</li>
+				<li>
 					<h3>API</h3>
 					<ul>
 						<li><a href="/page/checkout">Accept purchase<br><small>(hosted payment page)</small></a></li>
