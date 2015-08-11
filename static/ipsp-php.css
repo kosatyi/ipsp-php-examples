@@ -259,3 +259,9 @@ html,body{
 .modal-checkout .modal-content{
 	height:560px;
 }
+
+.widget-button{
+    display:inline-block;
+    padding:0px 25px;
+    line-height:50px;
+}

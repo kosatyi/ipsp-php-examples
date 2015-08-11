@@ -14,6 +14,8 @@
 		<link rel="shortcut icon" href="/favicon.ico">
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
+        <script src="/static/oplata.js"></script>
+
 		<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 
 		<link rel="stylesheet" href="/static/ipsp-php.css">
@@ -22,13 +24,13 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/github.min.css">
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
-		<script src="https://api.oplata.com/static/v1/js/oplata.js"></script>
+
 		<script>hljs.initHighlightingOnLoad();</script>
 
 	</head>
 	<body>
 	<header id="header">
-			<h1><?=Flight::get('appname')?></h1>
+			<h1><a href="/"><?=Flight::get('appname')?></a></h1>
 	</header>
 	<main id="main">
 		<ins class="col nav"></ins>
