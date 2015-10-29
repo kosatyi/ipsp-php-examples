@@ -14,7 +14,7 @@
 		<link rel="shortcut icon" href="/favicon.ico">
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
-        <script src="/static/oplata.js"></script>
+        <script src="https://api.oplata.com/static_common/v1/checkout/oplata.js"></script>
 
 		<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 

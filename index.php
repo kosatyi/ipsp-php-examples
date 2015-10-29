@@ -13,7 +13,7 @@ Flight::set('layout','layout/default');
 Flight::set('appname','IPSP PHP Examples');
 Flight::set('apptitle','Api');
 
-Flight::register('ipsp','Ipsp_Api',array( new Ipsp_Client(1000,'test') ) );
+Flight::register('ipsp','Ipsp_Api',array( new Ipsp_Client(1000,'test','api.oplata.com') ) );
 
 Flight::map('output', function( $content = NULL ){
     Flight::view()->set('ipsp',Flight::ipsp());
